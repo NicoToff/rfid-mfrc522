@@ -18,4 +18,4 @@ mqtt.on("message", (topic, message) => {
 // Publish a message every 5 seconds
 setInterval(() => {
     mqtt.publish(TOPIC, "Hello World!");
-}, 5000);
+}, 4000);

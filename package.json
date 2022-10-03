@@ -1,13 +1,13 @@
 {
   "name": "mqtt",
   "version": "1.0.0",
-  "description": "",
+  "description": "The MQTT pub sub for IoT TP2",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon -e js,json"
   },
   "keywords": [],
-  "author": "",
+  "author": "NicoToff",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
