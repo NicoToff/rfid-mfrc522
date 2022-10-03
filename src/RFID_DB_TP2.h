@@ -13,7 +13,8 @@ typedef struct
 const dbItem DB[] = {
     {{"Nico"}, {BYTE_NBR, {0xE, 0xC5, 0x51, 0x3}, SAK_TYPE}},
     {{"Sajad"}, {BYTE_NBR, {0x4, 0x98, 0x51, 0x3}, SAK_TYPE}},
-    {{"Ronaldo"}, {BYTE_NBR, {0x1A, 0x5A, 0xCD, 0x18}, SAK_TYPE}}};
+    {{"Ronaldo"}, {BYTE_NBR, {0x1A, 0x5A, 0xCD, 0x18}, SAK_TYPE}},
+    {{"Timothee"}, {BYTE_NBR, {0x1A, 0xD6, 0xC2, 0x18}, SAK_TYPE}}};
 
 const char *getCardName(MFRC522::Uid readUID)
 {
