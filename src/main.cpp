@@ -1,7 +1,11 @@
 #include <Arduino.h>
 #include <WiFi.h>
-#include "ssid_password.h"
 #include <PubSubClient.h>
+#include "ssid_password.h"
+/* Contient :
+   const char *ssid = "SSID_NAME";
+   const char *password = "PASSWORD";
+ */
 
 #define RX 16
 #define TX 17
