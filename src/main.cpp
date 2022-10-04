@@ -13,13 +13,11 @@ IPAddress initWiFi()
 {
     WiFi.mode(WIFI_STA);
     WiFi.begin(ssid, password);
-    Serial.print("Connecting to WiFi ..");
     while (WiFi.status() != WL_CONNECTED)
     {
         Serial.print('.');
-        delay(1000);
+        delay(100);
     }
-    Serial.println(WiFi.localIP());
 
     return WiFi.localIP();
 }
@@ -29,15 +27,8 @@ bool mqttConnect()
     bool connected = mqttClient.connected();
     if (!connected)
     {
-        unsigned long startTime = millis();
         Serial.print("Connecting to MQTT...");
-        // Tentative de connexion pendant 5 secondes
-        while (!mqttClient.connected() && (millis() - startTime < 5000))
-        {
-            mqttClient.connect("esp32_NicoToff");
-            Serial.print('.');
-            delay(100);
-        }
+        mqttClient.connect("esp32_NicoToff");
         connected = mqttClient.connected();
         connected ? Serial.println(" Connected!") : Serial.println(" FAILED!!!");
     }
@@ -63,9 +54,15 @@ void setup()
     Serial.begin(115200);
     Serial2.begin(115200, SERIAL_8N1, RX, TX);
     Serial.println("Hello by ESP32");
-    initWiFi();
+
+    Serial.print("Connecting to WiFi..");
+    IPAddress ip = initWiFi();
+    Serial.print("IP address: ");
+    Serial.println(ip);
+    Serial.print("On SSID: ");
+    Serial.println(WiFi.SSID());
+
     mqttConnect();
-    Serial.println("Setup done");
 }
 
 void loop()
