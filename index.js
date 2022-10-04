@@ -1,10 +1,5 @@
-require("dotenv").config();
-const mqtt = require("mqtt").connect(`mqtt://${process.env.RASPBBERRY_IP}:1883`, {
-    username: process.env.MQTT_USERNAME,
-    password: process.env.MQTT_PASSWORD,
-});
-
-const TOPIC = "IoT/TP2";
+const mqtt = require("mqtt").connect(`mqtt://test.mosquitto.org:1883`);
+const TOPIC = "helha/iot/tp2";
 
 mqtt.on("connect", () => {
     console.log("Connected to MQTT broker");
@@ -12,10 +7,13 @@ mqtt.on("connect", () => {
 });
 
 mqtt.on("message", (topic, message) => {
-    console.log("Message received: ", message.toString());
+    console.log("<" + new Date().toISOString().split("T").join(" ") + ">");
+    console.log(message.toString());
 });
 
-// Publish a message every 5 seconds
+// Reconnexion automatique toutes les 10 secondes si déconnecté
 setInterval(() => {
-    mqtt.publish(TOPIC, "Hello World!");
-}, 4000);
+    while (!mqtt.connected) {
+        mqtt.reconnect();
+    }
+}, 10000);
