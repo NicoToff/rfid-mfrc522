@@ -7,8 +7,7 @@ mqtt.on("connect", () => {
 });
 
 mqtt.on("message", (topic, message) => {
-    console.log("<" + new Date().toISOString().split("T").join(" ") + ">");
-    console.log(message.toString());
+    console.log("<" + new Date().toISOString().split("T").join(" ") + "> " + message.toString());
 });
 
 // Reconnexion automatique toutes les 10 secondes si déconnecté
