@@ -7,7 +7,7 @@
 #define TX 17
 
 WiFiClient wifiClient;
-PubSubClient mqttClient("public.mqtthq.com", 1883, wifiClient);
+PubSubClient mqttClient("test.mosquitto.org", 1883, wifiClient);
 
 IPAddress initWiFi()
 {
