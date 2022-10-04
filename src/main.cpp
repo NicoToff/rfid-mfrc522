@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <SPI.h>
 #include <MFRC522.h>
-#include <RFID_DB_TP2.h>
+#include "RFID_DB_TP2.h"
 
 #define RST_PIN 5
 #define SS_PIN 53
@@ -23,7 +23,7 @@ void setup()
     Serial.begin(115200);
     SPI.begin();
     mfrc522.PCD_Init();
-    Serial.println("RFID ready");
+    Serial.println("RFID ready on Mega");
 }
 
 void loop()
@@ -36,7 +36,7 @@ void loop()
             Serial.print(mfrc522.uid.uidByte[i], HEX);
             Serial.print(" ");
         }
-        Serial.print("\nTag Name: ");
+        Serial.print("-> ");
         Serial.println(getCardName(mfrc522.uid));
         delay(1000);
     }
